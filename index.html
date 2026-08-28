@@ -204,7 +204,7 @@ function repairDB(){ // 修复旧 localStorage 中的 Excel 序列号日期、�
 let DB = { suppliers:[], orders:[], recon:[], payments:[], ticketDetail:[], ticketDunning:[], inbound:[], plans:[], returns:[], flows:[], feedback:[], followups:[], orderEdits:{} };
 async function boot(silent){
   try{
-    const r = await fetch('./data.json', {cache:'no-store'});
+    const r = await fetch('./data.json?_=' + Date.now(), {cache:'no-store'});
     if(r.ok){
       const data = await r.json();
       DB.suppliers=data.suppliers||[]; DB.orders=data.orders||[]; DB.recon=data.recon||[];
